@@ -2,9 +2,6 @@ import numpy as np
 
 from sklearn.base import BaseEstimator, ClusterMixin, TransformerMixin
 
-from sklearn.datasets import load_digits, load_iris, load_diabetes
-from sklearn import datasets
-
 
 class ConstrainedKMeans(BaseEstimator, ClusterMixin, TransformerMixin):
 
@@ -73,6 +70,7 @@ def _dist(a, b=0):
     d = a - b
     return np.sqrt(d.dot(d))
 
+
 def _rank_centroids(instance, centroids):
     """
     Return a ascendant list of nearest clusters of certain instance
@@ -84,6 +82,7 @@ def _rank_centroids(instance, centroids):
     rank = np.asarray([_dist(d) for d in deltas]).argsort()
 
     return rank
+
 
 def _violate_constraints(instance, cluster, other_clusters, must_link, cannot_link):
     def get_other_instance(instance, link):
