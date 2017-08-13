@@ -1,17 +1,16 @@
 import numpy as np
-import json
 
 from sklearn.datasets import load_digits, load_iris, load_diabetes
 
 LINK_ARRAY_SIZE = 20
-datasets =[
-   # ("iris", load_iris()),
-    #("digits", load_digits()),
-    ("diabetes", load_diabetes())
+datasets = [
+    ("iris", load_iris()),
+    ("digits", load_digits()),
+    # ("diabetes", load_diabetes())
 ]
 
 
-def generate(link_array_size):
+def generate(link_array_size=LINK_ARRAY_SIZE):
     for name, data_set in datasets:
         samples = np.random.choice(len(data_set.data), link_array_size)
         must_links = []
@@ -47,4 +46,3 @@ def generate(link_array_size):
 
         links = {'must_link': must_links, 'cannot_link': cannot_links}
         np.save(name, links)
-
