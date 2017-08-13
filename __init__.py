@@ -46,7 +46,6 @@ class ConstrainedKMeans(BaseEstimator, ClusterMixin, TransformerMixin):
             for idx in range(self.n_clusters):
                 centroids[idx] = np.array(clusters[idx]).mean(axis=0)
 
-
         self.cluster_centers_ = centroids
         self.labels_ = labels
         self.inertia_ = inertia

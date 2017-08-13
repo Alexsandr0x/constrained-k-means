@@ -1,5 +1,3 @@
-print(__doc__)
-
 # Author: Phil Roth <mr.phil.roth@gmail.com>
 # License: BSD 3 clause
 

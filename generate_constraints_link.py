@@ -6,7 +6,7 @@ LINK_ARRAY_SIZE = 20
 datasets = [
     ("iris", load_iris()),
     ("digits", load_digits()),
-    # ("diabetes", load_diabetes())
+    ("diabetes", load_diabetes())
 ]
 
 
