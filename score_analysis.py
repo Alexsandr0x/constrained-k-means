@@ -12,7 +12,7 @@ import generate_constraints_link as generate_constraints_link
 
 random_state = 170
 
-for dataset_label, dataset in generate_constraints_link.datasets:
+for dataset_label, dataset, _ in generate_constraints_link.datasets:
     X = dataset.data
     y = dataset.target
 
@@ -25,7 +25,7 @@ for dataset_label, dataset in generate_constraints_link.datasets:
         serie_score.append(rand_avg)
     plt.plot(clusters, serie_score, label='KMeans', linewidth=2.0)
 
-    for link_size in [5, 10, 15, 20]:
+    for link_size in [5, 10, 15]:
         serie_score = []
         generate_constraints_link.generate(link_array_size=link_size)
         links = np.load(dataset_label + '.npy').item()
@@ -42,5 +42,3 @@ for dataset_label, dataset in generate_constraints_link.datasets:
     plt.ylabel("Rand Ajustado")
     plt.legend(loc="upper right")
     plt.show()
-
-quit()

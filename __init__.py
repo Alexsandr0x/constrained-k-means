@@ -41,7 +41,8 @@ class ConstrainedKMeans(BaseEstimator, ClusterMixin, TransformerMixin):
                         inertia += _dist(centroids[idx], d)
                         break
                 if violate_constraint:
-                    raise IOError("Unable to cluster")
+                    # raise IOError("Unable to cluster")
+                    pass
 
             for idx in range(self.n_clusters):
                 centroids[idx] = np.array(clusters[idx]).mean(axis=0)
@@ -60,7 +61,7 @@ class ConstrainedKMeans(BaseEstimator, ClusterMixin, TransformerMixin):
 
     def transform(self, X):
         def transform_single(d):
-            return np.array([ _dist(d, c) for c in self.cluster_centers_])
+            return np.array([_dist(d, c) for c in self.cluster_centers_])
 
         return map(transform_single, X)
 
